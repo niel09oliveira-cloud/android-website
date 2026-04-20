@@ -1,0 +1,485 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: Android;
+    src: url("../fonts/Android.ttf") format("truetype");
+}
+
+:root {
+    --cor0: #c5ebd6;
+    --cor1: #83e1ad;
+    --cor2: #3ddc84;
+    --cor3: #2fa866;
+    --cor4: #1a5c37;
+    --cor5: #063d1c;
+
+    --fonte-padrao: Arial, Verdana, Helvetica, sans-serif;
+    --fonte-destaque: 'Bebas Neue', cursive;
+    --fonte-android: Android, cursive;
+    
+    /* Transições suaves */
+    --transition-fast: 0.2s ease-out;
+    --transition-normal: 0.4s ease-out;
+    --transition-slow: 0.6s ease-out;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Scroll behavior suave */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--cor0);
+    font-family: var(--fonte-padrao);
+    overflow-x: hidden;
+}
+
+/* ============== HEADER ============== */
+header {
+    background-image: linear-gradient(to bottom, var(--cor3), var(--cor5));
+    min-height: 150px;
+    text-align: center;
+    padding: 40px;
+    animation: slideDownHeader 0.8s ease-out;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes slideDownHeader {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+header > h1 {
+    color: white;
+    font-family: var(--fonte-destaque);
+    font-size: 3em;
+    font-weight: normal;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.425);
+    animation: fadeInScale 1s ease-out 0.2s both;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+header > p {
+    font-family: var(--fonte-destaque);
+    font-size: 1.2em;
+    color: white;
+    max-width: 600px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: auto;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.425);
+    animation: fadeInScale 1s ease-out 0.4s both;
+}
+
+/* ============== NAVEGAÇÃO ============== */
+nav {
+    background-color: var(--cor5);
+    padding: 10px;
+    box-shadow: 0px 7px 9px rgba(0, 0, 0, 0.085);
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: slideDownNav 0.7s ease-out;
+}
+
+@keyframes slideDownNav {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+nav > a.nav-link {
+    color: var(--cor1);
+    padding: 10px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all var(--transition-fast);
+    position: relative;
+    display: inline-block;
+}
+
+/* Estado ativo (Home) */
+nav > a.nav-link.active {
+    background-color: var(--cor3);
+    color: white;
+    box-shadow: 0 4px 8px rgba(61, 220, 132, 0.3);
+}
+
+nav > a.nav-link:hover {
+    background-color: var(--cor3);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(61, 220, 132, 0.4);
+}
+
+/* Focus state para acessibilidade (teclado) */
+nav > a.nav-link:focus {
+    outline: 3px solid var(--cor2);
+    outline-offset: 2px;
+}
+
+nav > a.nav-link:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* ============== MAIN CONTENT ============== */
+main {
+    min-width: 300px;
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    animation: slideUpMain 0.8s ease-out 0.2s both;
+}
+
+@keyframes slideUpMain {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+main h1 {
+    color: var(--cor5);
+    font-family: var(--fonte-android);
+    font-weight: normal;
+    font-size: 1.8em;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    animation: fadeInScale 0.8s ease-out 0.4s both;
+}
+
+main h2 {
+    font-family: var(--fonte-destaque);
+    color: var(--cor4);
+    font-size: 1.3em;
+    font-weight: normal;
+    background-image: linear-gradient(to right, var(--cor1), transparent);
+    text-indent: 8px;
+    padding: 8px 0;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    transition: all var(--transition-normal);
+}
+
+main h2:hover {
+    transform: translateX(8px);
+    background-image: linear-gradient(to right, var(--cor2), transparent);
+}
+
+main p {
+    margin: 15px 0px;
+    text-align: justify;
+    text-indent: 30px;
+    font-size: 1em;
+    line-height: 2em;
+    color: #333;
+    transition: color var(--transition-fast);
+}
+
+main strong {
+    color: var(--cor4);
+    font-weight: bolder;
+}
+
+/* ============== LINKS ============== */
+main a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    background-color: var(--cor3);
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all var(--transition-fast);
+    display: inline-block;
+}
+
+main a:hover {
+    background-color: var(--cor4);
+    box-shadow: 0 4px 8px rgba(26, 92, 55, 0.3);
+    transform: translateY(-2px);
+}
+
+main a:focus {
+    outline: 3px solid var(--cor2);
+    outline-offset: 1px;
+}
+
+main a:focus:not(:focus-visible) {
+    outline: none;
+}
+
+main a:visited {
+    color: white;
+}
+
+/* ============== IMAGENS ============== */
+main picture {
+    display: block;
+    margin: 25px 0;
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+main img {
+    width: 100%;
+    border-radius: 8px;
+    transition: all var(--transition-normal);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+main img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+main img.pequena {
+    max-width: 350px;
+    display: block;
+    margin: 25px auto;
+}
+
+/* ============== ASIDE ============== */
+aside {
+    background-color: var(--cor1);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.15);
+    margin: 30px 0;
+    animation: slideInLeft 0.8s ease-out 0.6s both;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+aside > h3 {
+    background-color: var(--cor4);
+    color: white;
+    padding: 10px;
+    margin: -10px -10px 15px -10px;
+    border-radius: 10px 10px 0px 0px;
+    font-size: 1.2em;
+    transition: background-color var(--transition-fast);
+}
+
+aside > h3:hover {
+    background-color: var(--cor3);
+}
+
+aside > p {
+    margin: 15px 0px;
+    text-align: justify;
+    text-indent: 15px;
+    color: var(--cor4);
+    line-height: 1.8em;
+}
+
+aside > ul {
+    list-style-type: '\2714\00A0\00A0';
+    list-style-position: inside;
+    columns: 2;
+    color: var(--cor4);
+}
+
+aside > ul > li {
+    margin-bottom: 8px;
+    line-height: 1.6em;
+}
+
+aside a {
+    color: var(--cor4);
+    background-color: var(--cor0);
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+aside a:hover {
+    background-color: var(--cor2);
+    color: white;
+}
+
+/* ============== FOOTER ============== */
+footer {
+    background-color: var(--cor5);
+    color: white;
+    text-align: center;
+    font-size: 1em;
+    padding: 20px;
+    margin-top: 40px;
+    animation: slideUpFooter 0.8s ease-out 0.8s both;
+}
+
+@keyframes slideUpFooter {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+footer p {
+    margin: 8px 0;
+    line-height: 1.6em;
+}
+
+footer a {
+    color: var(--cor2);
+    font-weight: bolder;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    border-bottom: 2px solid transparent;
+}
+
+footer a:hover {
+    color: white;
+    border-bottom-color: var(--cor2);
+}
+
+footer a:focus {
+    outline: 3px solid var(--cor2);
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
+footer a:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* ============== RESPONSIVIDADE ============== */
+@media (max-width: 768px) {
+    header {
+        padding: 30px 20px;
+    }
+
+    header > h1 {
+        font-size: 2.2em;
+    }
+
+    header > p {
+        font-size: 1em;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    nav > a.nav-link {
+        text-align: center;
+        padding: 12px;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    main h1 {
+        font-size: 1.5em;
+    }
+
+    main h2 {
+        font-size: 1.1em;
+    }
+
+    aside > ul {
+        columns: 1;
+    }
+
+    main p {
+        text-indent: 15px;
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 480px) {
+    header > h1 {
+        font-size: 1.8em;
+    }
+
+    header > p {
+        font-size: 0.9em;
+    }
+
+    main {
+        padding: 12px;
+    }
+
+    main p {
+        text-indent: 12px;
+    }
+
+    main img.pequena {
+        max-width: 100%;
+    }
+}
+
+/* ============== PRINT ============== */
+@media print {
+    nav, footer {
+        display: none;
+    }
+
+    main {
+        box-shadow: none;
+        max-width: 100%;
+    }
+}
